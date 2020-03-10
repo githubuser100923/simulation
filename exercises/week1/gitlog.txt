@@ -1,3 +1,5 @@
+This is what it printed
+
 commit 23e7d1422d91f0de206c9eb24ee67f8b48a4e25e
 Author: Elias Lankinen <elias@lankinen.xyz>
 Date:   Tue Mar 10 16:36:59 2020 +0200
