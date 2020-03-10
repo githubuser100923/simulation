@@ -1,0 +1,103 @@
+commit 23e7d1422d91f0de206c9eb24ee67f8b48a4e25e
+Author: Elias Lankinen <elias@lankinen.xyz>
+Date:   Tue Mar 10 16:36:59 2020 +0200
+
+    muutoksia
+
+ tiedostoja/file22 | 0
+ tiedostoja/file3  | 1 +
+ 2 files changed, 1 insertion(+)
+
+commit 29ae91b80be2f9f1ab4378daa04aa33483d330a9
+Author: Elias Lankinen <elias@lankinen.xyz>
+Date:   Tue Mar 10 16:30:11 2020 +0200
+
+    muutoksia
+
+ eka.txt    | 25 +++++++++----------------
+ kolmas.txt |  2 +-
+ 2 files changed, 10 insertions(+), 17 deletions(-)
+
+commit 219f3d68432b5050db398181b8441b7751e9bd27
+Author: Elias Lankinen <elias@lankinen.xyz>
+Date:   Tue Mar 10 16:26:51 2020 +0200
+
+    tiedosto to eka
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit c1abe39d38f361137299e939b8f0f0db89c4cdc8
+Author: Elias Lankinen <elias@lankinen.xyz>
+Date:   Tue Mar 10 16:26:17 2020 +0200
+
+    poisting toinen.txt
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 3c54e9fe3de33002ee466e2f43e20c7edd282074
+Author: Elias Lankinen <elias@lankinen.xyz>
+Date:   Tue Mar 10 16:25:39 2020 +0200
+
+    Hey
+
+ tiedosto.txt | 19 +++++++++----------
+ 1 file changed, 9 insertions(+), 10 deletions(-)
+
+commit afc951a829062d1eef5f1b559e80bac682886130
+Author: Elias Lankinen <elias@lankinen.xyz>
+Date:   Tue Mar 10 16:24:26 2020 +0200
+
+    paljon tekstia tiedosto.txt
+
+ tiedosto.txt | 571 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 571 insertions(+)
+
+commit bde7f23a4a1e06f756b72e770881864530f5bb49
+Author: Elias Lankinen <elias@lankinen.xyz>
+Date:   Tue Mar 10 16:23:27 2020 +0200
+
+    stuff + test.txt
+
+ stuff/test.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 77cf1365ccb7ec6ed8935114ae053eef0cfa7058
+Author: Elias Lankinen <elias@lankinen.xyz>
+Date:   Tue Mar 10 16:23:00 2020 +0200
+
+    toinen.txt kolmas.txt muutettu
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 9a2ae9a0c33bd6ebf7c098b1c60fa4536c2656cc
+Author: Elias Lankinen <elias@lankinen.xyz>
+Date:   Tue Mar 10 16:22:31 2020 +0200
+
+    kolmas
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 94ece4b6879c9d34970ec1c9ebc42acf8bb96f3a
+Author: Elias Lankinen <elias@lankinen.xyz>
+Date:   Tue Mar 10 16:21:51 2020 +0200
+
+    muutos ja lisays
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 2c1f81dc3b997ed8b906a373017bfd14872cfd5d
+Author: Elias Lankinen <elias@lankinen.xyz>
+Date:   Tue Mar 10 16:20:11 2020 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
