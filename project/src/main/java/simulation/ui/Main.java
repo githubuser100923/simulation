@@ -25,8 +25,8 @@ Main UI
 public class Main extends Application {
     private Service service;
     
-    private int SCREEN_WIDTH = 600;
-    private int SCREEN_HEIGHT = 400;
+    private int windowWidth = 600;
+    private int windowHeight = 400;
     
     private Scene joinScene;
     private Scene gameScene;
@@ -40,37 +40,8 @@ public class Main extends Application {
     
     @Override
     public void start(Stage window) {
-        // Join scene
-        Label label = new Label("username");
-        TextField usernameInput = new TextField();
-        Button start = new Button("join");
-        Label errorMessage = new Label();
-        
-        start.setOnAction((event) -> {
-            String usernameText = usernameInput.getText();
-            usernameLabel.setText(usernameText);
-            String error = service.joinButtonPressed(usernameText);
-            if(error == null){
-                service.createNewPlayer(usernameText);
-                window.setScene(gameScene);
-                usernameInput.setText("");
-            } else {
-                errorMessage.setText(error);
-                errorMessage.setTextFill(Color.RED);
-            }
-        });
-        
-        VBox joinLayout = new VBox(label, errorMessage, usernameInput, start);
-
-        joinLayout.setAlignment(Pos.CENTER);
-        joinLayout.setPadding(new Insets(20,20,20,20));
-        joinScene = new Scene(joinLayout, SCREEN_WIDTH, SCREEN_HEIGHT);
-        
-        // Game scene
-        usernameLabel = new Label(usernameInput.getText());
-        
-        HBox gameLayout = new HBox(usernameLabel);
-        gameScene = new Scene(gameLayout, SCREEN_WIDTH, SCREEN_HEIGHT);
+        setupJoinScene(window);
+        setupGameScene(window);
         
         // Setup window
         window.setTitle("Simulation");
@@ -78,10 +49,46 @@ public class Main extends Application {
         window.show();
     }
     
+    public void setupJoinScene(Stage window) {
+        Label label = new Label("username");
+        TextField usernameInput = new TextField();
+        Button start = new Button("join");
+        Label errorMessage = new Label();
+        
+        start.setOnAction((event) -> startButtonAction(window, usernameInput, errorMessage));
+        
+        VBox joinLayout = new VBox(label, errorMessage, usernameInput, start);
+
+        joinLayout.setAlignment(Pos.CENTER);
+        joinLayout.setPadding(new Insets(20, 20, 20, 20));
+        joinScene = new Scene(joinLayout, windowWidth, windowHeight);
+    }
+    
+    public void startButtonAction(Stage window, TextField usernameInput, Label errorMessage) {
+        String usernameText = usernameInput.getText();
+        usernameLabel.setText(usernameText);
+        String error = service.joinButtonPressed(usernameText);
+        if (error == null) {
+            service.createNewPlayer(usernameText);
+            window.setScene(gameScene);
+            usernameInput.setText("");
+        } else {
+            errorMessage.setText(error);
+            errorMessage.setTextFill(Color.RED);
+        }
+    }
+    
+    public void setupGameScene(Stage window) {
+        usernameLabel = new Label("username");
+        
+        HBox gameLayout = new HBox(usernameLabel);
+        gameScene = new Scene(gameLayout, windowWidth, windowHeight);
+    }
+    
     @Override
     public void stop() {
-      // do stuff here when user leaves the program
-      System.out.println("exiting");
+        // do stuff here when user leaves the program
+        System.out.println("exiting");
     }
     
     public static void main(String[] args) {
