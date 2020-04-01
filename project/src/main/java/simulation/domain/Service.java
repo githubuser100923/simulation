@@ -11,10 +11,6 @@ Functionalities
 public class Service {
     Player player;
     
-    //public Service() {
-    //    player = null;
-    //}
-    
     public String joinButtonPressed(String username){
         if(username.length() < 3) {
             return "Type at least 3 characters";
