@@ -9,7 +9,7 @@ Code is written and tested using Java version 11.
 ## Documentation
 
 [requirements](https://github.com/githubuser100923/simulation/blob/master/docs/requirements.md)  
-[working hours](https://github.com/githubuser100923/simulation/blob/master/docs/working_hours.md)
+[working hours](https://github.com/githubuser100923/simulation/blob/master/docs/working_hours.md)  
 [architecture](https://github.com/githubuser100923/simulation/blob/master/docs/architecture.md)
 
 ## Releases
