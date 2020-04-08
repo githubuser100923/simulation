@@ -8,7 +8,7 @@ At the beginning all users have the same access but later it is possible to add 
 
 ## Features
 
-- [ ] Select character from a few choices.
+- [x] Select character from a few choices.
 - [x] Pick a name
 - [ ] Show name to other players
 - [ ] Move left or right and jump in some kind of environment where they can also see other players moving real time.
