@@ -1,9 +1,13 @@
 
 package simulation.ui;
 
+import java.util.HashMap;
+import java.util.Map;
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -20,6 +24,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import simulation.domain.Player;
 
 import simulation.domain.Service;
 
@@ -80,7 +85,8 @@ public class Main extends Application {
         usernameLabel.setText(usernameText);
         String error = service.joinButtonPressed(usernameText);
         if (error == null) {
-            service.createNewPlayer(usernameText);
+            service.createNewPlayer(usernameText, 0, 0);
+            // service.loadOthers();
             window.setScene(chooseCharacterScene);
             usernameInput.setText("");
         } else {
@@ -99,6 +105,7 @@ public class Main extends Application {
             @Override
             public void handle(MouseEvent event) {
                 selectedCharacter = image1;
+                setupGameScene(window);
                 window.setScene(gameScene);
                 event.consume();
             }
@@ -113,6 +120,7 @@ public class Main extends Application {
             @Override
             public void handle(MouseEvent event) {
                 selectedCharacter = image2;
+                setupGameScene(window);
                 window.setScene(gameScene);
                 event.consume();
             }
@@ -127,6 +135,7 @@ public class Main extends Application {
             @Override
             public void handle(MouseEvent event) {
                 selectedCharacter = image3;
+                setupGameScene(window);
                 window.setScene(gameScene);
                 event.consume();
             }
@@ -139,32 +148,41 @@ public class Main extends Application {
     public void setupGameScene(Stage window) {
         Pane layout = new Pane();
         
-        Rectangle character = new Rectangle(100,100);
-        character.setFill(new ImagePattern(selectedCharacter));
+        Player player = service.getPlayer();
+        player.setImage(selectedCharacter);
         
-        character.setTranslateX(100);
-        character.setTranslateY(100);
+        player.setCharacterPosition(100, 100);
         
-        layout.getChildren().add(character);
+        layout.getChildren().add(player.getCharacter());
+        
+        Map<KeyCode, Boolean> pressedButtons = new HashMap<>();
         
         gameScene = new Scene(layout, windowWidth, windowHeight);
         gameScene.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.LEFT) {
-                character.setX(character.getX() - 10);
-            }
-
-            if (event.getCode() == KeyCode.RIGHT) {
-                character.setX(character.getX() + 10);
-            }
-            
-            if (event.getCode() == KeyCode.UP) {
-                character.setY(character.getY() - 10);
-            }
-            
-            if (event.getCode() == KeyCode.DOWN) {
-                character.setY(character.getY() + 10);
-            }
+            pressedButtons.put(event.getCode(), Boolean.TRUE);
         });
+        
+        gameScene.setOnKeyReleased(event -> {
+            pressedButtons.put(event.getCode(), Boolean.FALSE);
+        });
+        
+        new AnimationTimer() {
+            @Override
+            public void handle(long current) {
+                if(pressedButtons.getOrDefault(KeyCode.RIGHT, false)) {
+                    player.move(5,0);
+                }
+                if(pressedButtons.getOrDefault(KeyCode.LEFT, false)) {
+                    player.move(-5,0);
+                }
+                if(pressedButtons.getOrDefault(KeyCode.UP, false)) {
+                    player.move(0,-5);
+                }
+                if(pressedButtons.getOrDefault(KeyCode.DOWN, false)) {
+                    player.move(0,5);
+                }
+            }
+        }.start();
     }
     
     @Override

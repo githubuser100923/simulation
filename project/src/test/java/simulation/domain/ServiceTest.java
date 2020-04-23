@@ -22,4 +22,10 @@ public class ServiceTest {
         assertEquals(service.joinButtonPressed("E"), "Type at least 3 characters");
     }
     
+    @Test
+    public void createNewPlayer() {
+        service.createNewPlayer("Elias", 0, 0);
+        assertEquals(service.getPlayer().getName(), "Elias");
+        assertEquals(service.getPlayer().getName(), "Elias");
+    }
 }
