@@ -10,7 +10,7 @@ Code is written and tested using Java version 11.
 
 [requirements](https://github.com/githubuser100923/simulation/blob/master/docs/requirements.md)  
 [working hours](https://github.com/githubuser100923/simulation/blob/master/docs/working_hours.md)  
-[architecture](https://github.com/githubuser100923/simulation/blob/master/docs/architecture.md)
+[architecture](https://github.com/githubuser100923/simulation/blob/master/docs/achitecture.md)
 
 ## Releases
 
