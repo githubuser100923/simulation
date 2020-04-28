@@ -10,7 +10,9 @@ import com.google.cloud.firestore.QuerySnapshot;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
@@ -29,20 +31,22 @@ public class Service {
     
     public Service() {
         this.player = new Player("default",0,0);
-        
-        /*GoogleCredentials credentials = null;
+                
+        GoogleCredentials credentials = null;
         try {
-            credentials = GoogleCredentials.getApplicationDefault();
+            InputStream serviceAccount = new FileInputStream("/home/elias/simpleaction-32740-48947941311f.json");
+            credentials = GoogleCredentials.fromStream(serviceAccount);
         } catch (IOException ex) {
             Logger.getLogger(Service.class.getName()).log(Level.SEVERE, null, ex);
         }
         FirebaseOptions options = new FirebaseOptions.Builder()
             .setCredentials(credentials)
-            .setProjectId("projectId")
             .build();
         FirebaseApp.initializeApp(options);
 
-        db = FirestoreClient.getFirestore();*/
+        db = FirestoreClient.getFirestore();
+        
+        loadOthers();
     }
     
     public String joinButtonPressed(String username) {
@@ -57,7 +61,7 @@ public class Service {
     }
     
     public void loadOthers() {
-        /*ApiFuture<QuerySnapshot> query = db.collection("players").get();
+        ApiFuture<QuerySnapshot> query = db.collection("players").get();
         QuerySnapshot querySnapshot = null;
         try {
             querySnapshot = query.get();
@@ -72,7 +76,7 @@ public class Service {
           System.out.println("X: " + document.getString("x"));
           System.out.println("Y: " + document.getString("y"));
           System.out.println("Character: " + document.getLong("character"));
-        }*/
+        }
     }
     
     public Player getPlayer() {
