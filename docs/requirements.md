@@ -1,14 +1,13 @@
 # Requirements
 
-The purpose of this project is to build a simple game where people can see each other moving real time. Location information is shared using database on internet.
+The purpose of this project is to build a simple game where players can see each other's position. Location information is shared using database on internet.
 
 ## Users
 
-At the beginning all users have the same access but later it is possible to add admin rights for certain people to certain rooms.
+There are only one type of users who have right to do everything possible.
 
 ## Features
 
 - [x] Select character from a few choices.
 - [x] Pick a name
-- [ ] Show name to other players
-- [ ] Move left or right and jump in some kind of environment where they can also see other players moving real time.
+- [x] Move left, right, up, and down

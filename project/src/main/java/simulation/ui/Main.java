@@ -1,10 +1,14 @@
 
 package simulation.ui;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javafx.animation.AnimationTimer;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Point2D;
@@ -25,6 +29,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import simulation.domain.Player;
+import javafx.util.Duration;
+
 
 import simulation.domain.Service;
 
@@ -45,6 +51,8 @@ public class Main extends Application {
     private Scene joinScene;
     private Scene chooseCharacterScene;
     private Scene gameScene;
+    
+    private Player myPlayer;
     
     private Label usernameLabel = new Label();
 
@@ -86,7 +94,6 @@ public class Main extends Application {
         String error = service.joinButtonPressed(usernameText);
         if (error == null) {
             service.createNewPlayer(usernameText, 0, 0);
-            // service.loadOthers();
             window.setScene(chooseCharacterScene);
             usernameInput.setText("");
         } else {
@@ -148,12 +155,20 @@ public class Main extends Application {
     public void setupGameScene(Stage window) {
         Pane layout = new Pane();
         
-        Player player = service.getPlayer();
-        player.setImage(selectedCharacter);
+        myPlayer = service.getPlayer();
+        myPlayer.setImage(selectedCharacter);
         
-        player.setCharacterPosition(100, 100);
+        myPlayer.setCharacterPosition(myPlayer.getX(), myPlayer.getY());
         
-        layout.getChildren().add(player.getCharacter());
+        layout.getChildren().add(myPlayer.getCharacter());
+        
+        ArrayList<Player> players = service.getPlayers();
+        for (int i = 0; i < players.size(); i++) {
+            Player p = players.get(i);
+            p.setImage(new Image("https://images-na.ssl-images-amazon.com/images/I/81-yKbVND-L.png"));
+            p.setCharacterPosition(p.getX(), p.getY());
+            layout.getChildren().add(p.getCharacter());
+        }
         
         Map<KeyCode, Boolean> pressedButtons = new HashMap<>();
         
@@ -169,17 +184,17 @@ public class Main extends Application {
         new AnimationTimer() {
             @Override
             public void handle(long current) {
-                if(pressedButtons.getOrDefault(KeyCode.RIGHT, false)) {
-                    player.move(5,0);
+                if (pressedButtons.getOrDefault(KeyCode.RIGHT, false)) {
+                    myPlayer.move(5, 0);
                 }
-                if(pressedButtons.getOrDefault(KeyCode.LEFT, false)) {
-                    player.move(-5,0);
+                if (pressedButtons.getOrDefault(KeyCode.LEFT, false)) {
+                    myPlayer.move(-5, 0);
                 }
-                if(pressedButtons.getOrDefault(KeyCode.UP, false)) {
-                    player.move(0,-5);
+                if (pressedButtons.getOrDefault(KeyCode.UP, false)) {
+                    myPlayer.move(0, -5);
                 }
-                if(pressedButtons.getOrDefault(KeyCode.DOWN, false)) {
-                    player.move(0,5);
+                if (pressedButtons.getOrDefault(KeyCode.DOWN, false)) {
+                    myPlayer.move(0, 5);
                 }
             }
         }.start();
